@@ -1,0 +1,48 @@
+INFO: 08-14 14:57:45: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 14:57:45: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 14:57:46: main.py:69 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x102f543d0>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+INFO: 08-14 15:01:23: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:01:23: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 15:01:24: main.py:69 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x104122410>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+INFO: 08-14 15:02:48: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:02:48: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 15:02:49: main.py:69 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x102c14410>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+INFO: 08-14 15:08:18: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:08:18: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 15:08:19: main.py:69 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x10aff2410>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+INFO: 08-14 15:13:55: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:13:55: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 15:13:56: main.py:72 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x103100410>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+ERROR: 08-14 15:13:56: main.py:59 -- 140735918302080 get html fail
+INFO: 08-14 15:14:48: main.py:38 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:14:48: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+ERROR: 08-14 15:14:49: main.py:71 -- 140735918302080 can not connect to the https://www.liaoxuefeng.com/,info:HTTPSConnectionPool(host='www.liaoxuefeng.com', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x100fa0410>, 'Connection to 10.10.1.10 timed out. (connect timeout=1)'))
+ERROR: 08-14 15:14:49: main.py:58 -- 140735918302080 get html fail
+INFO: 08-14 15:15:56: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:15:56: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+DEBUG: 08-14 15:15:57: connectionpool.py:393 -- 140735918302080 https://www.liaoxuefeng.com:443 "GET / HTTP/1.1" 200 49715
+INFO: 08-14 15:15:57: main.py:69 -- 140735918302080 get https://www.liaoxuefeng.com/ content successfully
+INFO: 08-14 15:15:57: main.py:50 -- 140735918302080 get 18 new links
+DEBUG: 08-14 15:15:57: connectionpool.py:205 -- 140735918302080 Starting new HTTP connection (1): www.4clojure.com:80
+ERROR: 08-14 15:15:59: main.py:72 -- 140735918302080 can not connect to the http://www.4clojure.com/,info:HTTPConnectionPool(host='www.4clojure.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x10dfaf650>, 'Connection to www.4clojure.com timed out. (connect timeout=1)'))
+ERROR: 08-14 15:15:59: main.py:59 -- 140735918302080 get html error
+DEBUG: 08-14 15:15:59: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): bbs.ksyun.com:443
+DEBUG: 08-14 15:15:59: connectionpool.py:393 -- 140735918302080 https://bbs.ksyun.com:443 "GET / HTTP/1.1" 301 None
+DEBUG: 08-14 15:15:59: connectionpool.py:393 -- 140735918302080 https://bbs.ksyun.com:443 "GET /forum.php HTTP/1.1" 200 None
+INFO: 08-14 15:15:59: main.py:69 -- 140735918302080 get https://bbs.ksyun.com content successfully
+INFO: 08-14 15:15:59: main.py:50 -- 140735918302080 get 13 new links
+ERROR: 08-14 15:15:59: main.py:56 -- 140735918302080 url:%s has been visited
+ERROR: 08-14 15:15:59: main.py:56 -- 140735918302080 url:%s has been visited
+DEBUG: 08-14 15:15:59: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.apple.com:443
+DEBUG: 08-14 15:15:59: connectionpool.py:393 -- 140735918302080 https://www.apple.com:443 "GET /safari/ HTTP/1.1" 200 69277
+INFO: 08-14 15:15:59: main.py:69 -- 140735918302080 get https://www.apple.com/safari/ content successfully
+INFO: 08-14 15:15:59: main.py:50 -- 140735918302080 get 1 new links
+DEBUG: 08-14 15:15:59: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.microsoft.com:443
+INFO: 08-14 15:16:11: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:16:11: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+INFO: 08-14 15:16:29: main.py:39 -- 140735918302080 Add the seeds url "['https://www.liaoxuefeng.com/']" to the unvisited url list
+DEBUG: 08-14 15:16:29: connectionpool.py:823 -- 140735918302080 Starting new HTTPS connection (1): www.liaoxuefeng.com:443
+DEBUG: 08-14 15:16:29: connectionpool.py:393 -- 140735918302080 https://www.liaoxuefeng.com:443 "GET / HTTP/1.1" 200 49715
+INFO: 08-14 15:16:30: main.py:69 -- 140735918302080 get https://www.liaoxuefeng.com/ content successfully
+INFO: 08-14 15:16:30: main.py:50 -- 140735918302080 get 18 new links
+DEBUG: 08-14 15:16:30: connectionpool.py:205 -- 140735918302080 Starting new HTTP connection (1): www.4clojure.com:80
