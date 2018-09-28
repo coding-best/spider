@@ -7,6 +7,8 @@
 ############################################## 
 
 import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import requests
 import re
 import threading
@@ -16,8 +18,7 @@ import logging
 import log
 import time
 import os
-#import threading
-#import BeautifulSoup
+import urlparse
 
 
 
@@ -45,8 +46,11 @@ class Spider(object):
         logging.info("Add the seeds url \"%s\"" % self.seeds) 
 
     def muti_thread_crawl(self):
+        """
+        多线程抓取
+        """
         for i in self.seeds:
-            #mythread = MyThread(self.crawl(i))
+            logging.info("current threads.count:%s,max threads count:%s" % (len(self.threads),self.thread_count))         
             mythread = threading.Thread(target=self.crawl, args=(i,))
             self.threads.append(mythread)
         
@@ -54,13 +58,20 @@ class Spider(object):
         for t in self.threads:
             logging.info("%s is start" % t.getName())
             t.start()
+            #控制线程并发的数量
+            while True:
+                if len(threading.enumerate()) < self.thread_count:
+                    break
 
         for t in self.threads:
             t.join()
             logging.info("%s is done" % t.getName())
         sys.exit(0)
-
+    
     def crawl(self, seed):
+        """
+        抓取函数
+        """
         #根据每一个线程初始化独自的种子队列
         linksQuence = linkquence.linkQuence()
         linksQuence.addUnvisitedUrl(seed)
@@ -76,14 +87,14 @@ class Spider(object):
                 logging.info("crawling the urls : %s, current_depth=%s" % (visitUrl, current_depth))
                 time.sleep(1)
                 html = self.get_html_content(visitUrl)
-                urls = self.get_urls(html)
+                urls = self.get_urls(html,visitUrl)
                 if urls:
                     logging.info("get %s new links" % len(urls))
                     linksQuence.addVisitedUrl(visitUrl)
                     urlslink.extend(urls)
                     print urlslink
                 else:
-                    logging.error("get url:%s html error" % visitUrl)
+                    logging.error("the url:%s does have another url link" % visitUrl)
 
             for url in urlslink:
                 if url != "" and url not in linksQuence.getVisitedUrl():
@@ -96,10 +107,12 @@ class Spider(object):
 
 
     def get_html_content(self, url):
-
+        """
+        获取网页内容
+        """
         try:
             requests.packages.urllib3.disable_warnings()
-            response = requests.get(url, headers=self.headers, verify=False, timeout=(3,3)) #, proxies=self.proxies, timeout=(3, 3))
+            response = requests.get(url, headers=self.headers, verify=False, timeout=self.crawl_timeout) #, proxies=self.proxies, timeout=(3, 3))
             if response.status_code == 200:
                 logging.info('get %s content successfully' % url)
                 coding = response.apparent_encoding
@@ -107,13 +120,28 @@ class Spider(object):
                 return response.text
             else:
                 logging.error("get url: %s faild,status_code = %s" % (url, response.status_code))
-        except Exception, e:
-            logging.error("can not connect to the %s,info:%s" % (url, e.message) ) 
+        except requests.exceptions.ConnectionError as e:
+            logging.error("connect to the %s FAILD, %s" % (url, e.message))
+        except requests.exceptions.ConnectTimeout as e:
+            logging.error("connect to the %s FAILD, %s" % (url, e.message))
+        except requests.exceptions.ProxyError as e :
+            logging.error("connect to the %s FAILD, %s" % (url, e.message))        
+        except Exception as e:
+            logging.error("connect to the %s FAILD, %s" % (url, e.message)) 
 
-    def get_urls(self, html):
+    def get_urls(self, html, baseUrl):
+        """
+        获取网页内容里的url链接
+        """
         #soup = BeautifulSoup(html, 'lxml')
         if html :
-            urls = re.findall(self.pattern, html) 
+            url_list = re.findall(self.pattern, html, re.I)
+            #处理相对路径和绝对路径
+            urls = []
+            for url in url_list:
+                url_parse = urlparse.urlparse(url)
+                url_join = urlparse.urljoin(baseUrl,url)
+                urls.append(url_join)
             #转换为set去重
             real_urls = list(set(urls))
             return real_urls
@@ -121,17 +149,22 @@ class Spider(object):
             return None
     
     def print_out(self,linkquence):
-
+        """
+        输出结果
+        """
         vlist = linkquence.getVisitedUrl()
         nlist = linkquence.getUnvisitedUrl()
-        f = open(self.output, 'a')
-        f.write(10*"-" + "has been visited urls:----------\n")
-        for e in vlist:
-            f.write(e + "\n")           
-        f.write(10*"-" + "have not visited urls:----------\n")
-        for e in nlist:
-            f.write(e + "\n")
-        f.close
+        if not os.path.isdir(self.output):
+            os.makedirs(self.output)
+        #抓取且已经访问过的链接
+        with open(self.output + "/HasVisite_url", 'a') as f:
+            for e in vlist:
+                f.write(e + "\n")            
+        #抓取但还未访问的链接
+        with open(self.output + "/UnVisite_url", 'a') as f:
+            for e in nlist:
+                f.write(e + "\n")         
+
 
 
 
