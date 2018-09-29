@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 ##############################################
 #
-# 爬虫启动模块
+# This is spider start module and read parameter
 #
 ############################################## 
 import sys
@@ -40,7 +40,6 @@ def parse_opt(opts):
             sys.exit(0)
         else:
             continue
-    print 'conf_file:%s' % (conf_file)
     return conf_file
             
     
@@ -77,7 +76,9 @@ def load_ini(conf_file):
 
 
 if __name__ == "__main__":
+    #初始化日志级别
     log.init_log(level=logging.INFO)
+    #初始化conf配置
     conf = {}
     if len(sys.argv[1:])==0:
         print_help()

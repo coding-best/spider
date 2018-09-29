@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 ##############################################
 #
-# 爬虫主模块
+# This spider main module 
 #
 ############################################## 
 
@@ -141,6 +141,7 @@ class Spider(object):
             for url in url_list:
                 url_parse = urlparse.urlparse(url)
                 url_join = urlparse.urljoin(baseUrl,url)
+                #url_join = url_parse.netloc
                 urls.append(url_join)
             #转换为set去重
             real_urls = list(set(urls))
@@ -156,11 +157,11 @@ class Spider(object):
         nlist = linkquence.getUnvisitedUrl()
         if not os.path.isdir(self.output):
             os.makedirs(self.output)
-        #抓取且已经访问过的链接
+        #打印抓取且已经访问过的链接
         with open(self.output + "/HasVisite_url", 'a') as f:
             for e in vlist:
                 f.write(e + "\n")            
-        #抓取但还未访问的链接
+        #打印抓取但还未访问的链接
         with open(self.output + "/UnVisite_url", 'a') as f:
             for e in nlist:
                 f.write(e + "\n")         

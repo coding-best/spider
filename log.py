@@ -1,10 +1,10 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 ################################################################################
 #
 # This module provide log init, for log format and others.
 #
 ################################################################################
-
-#!/usr/bin/env python
 
 import os
 import logging.handlers
